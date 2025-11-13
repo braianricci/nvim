@@ -1,3 +1,4 @@
+
 ----------------oO0 basics 0Oo----------------
 
 vim.o.number = true
@@ -34,8 +35,12 @@ map("n", "<leader>f", ":Pick files<CR>")
 map("n", "<leader>h", ":Pick help<CR>")
 map("n", "<leader>e", ":Oil<CR>")
 
-map("n", "<leader>t", ":split | terminal<CR>", opts)
---map("t","<Esc>", [[<C-\><C-n>]], opts)
+map("n", "<leader>t", function ()
+		vim.cmd("split | terminal")
+		vim.cmd("startinsert")
+end, opts)
+map("t", "<leader>t", "<C-\\><C-n>:hide<CR>", opts)
+map("t", "<Esc>", "<C-\\><C-n>:q<CR>", opts)
 
 
 ----------------oO0 plugins 0Oo----------------
