@@ -80,13 +80,14 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/echasnovski/mini.pairs" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
+	{ src = "https://github.com/mason-org/mason.nvim" },
 })
 
 require "mini.pick".setup()
 require "mini.pairs".setup()
 require "oil".setup()
+require "mason".setup()
 
 vim.lsp.enable({ "lua_ls" })
 
@@ -94,6 +95,7 @@ vim.lsp.enable({ "lua_ls" })
 ----------------oO0 style 0Oo----------------
 
 vim.cmd("colorscheme vague")
+--vim.cmd(":highlight StatusLine guibg=#a36f51 ctermbg=none")
 vim.cmd(":highlight StatusLine guibg=none ctermbg=none")
 vim.cmd(":highlight Normal guibg=none ctermbg=none")
 vim.cmd(":highlight NormalNC guibg=none ctermbg=none")
@@ -104,3 +106,6 @@ vim.cmd(":highlight SignColumn guibg=none ctermbg=none")
 vim.cmd(":highlight winborder guibg=none ctermbg=none")
 vim.cmd(":highlight NormalFloat guibg=none ctermbg=none")
 vim.cmd(":highlight FloatBorder guibg=none ctermbg=none")
+
+vim.o.fillchars = "stl:─"
+vim.o.statusline = "%=    %m[%f] %l/%L"
