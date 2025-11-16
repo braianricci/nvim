@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "mini.pairs": {
+      "rev": "b316e68",
+      "src": "https://github.com/echasnovski/mini.pairs"
+    },
     "mini.pick": {
       "rev": "fe1c25e",
       "src": "https://github.com/echasnovski/mini.pick"
