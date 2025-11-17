@@ -79,16 +79,18 @@ map("n", "<leader>a", function ()
 	vim.cmd("argdedup")
 end)
 
+
 ----------------oO0 plugins 0Oo----------------
 
 vim.pack.add({
-	{ src = "https://github.com/vague2k/vague.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/echasnovski/mini.pick" },
-	{ src = "https://github.com/echasnovski/mini.pairs" },
-	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
-	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/BourgeoisBear/clrzr" }, --not working?
+	"vague2k/vague.nvim",
+	"echasnovski/mini.pick",
+	"stevearc/oil.nvim",
+	"echasnovski/mini.pick",
+	"echasnovski/mini.pairs",
+	"chomosuke/typst-preview.nvim",
+	"mason-org/mason.nvim",
+	"BourgeoisBear/clrzr", --not working?
 })
 
 require "mini.pick".setup()
@@ -115,4 +117,4 @@ vim.cmd(":highlight NormalFloat guibg=none ctermbg=none")
 vim.cmd(":highlight FloatBorder guibg=none ctermbg=none")
 
 vim.o.fillchars = "stl:─"
-vim.o.statusline = "%= %m[%f] :: %l/%L"
+vim.o.statusline = "%= %m[%f] %l/%L"
