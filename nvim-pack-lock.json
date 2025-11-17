@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "clrzr": {
+      "rev": "0ab91fef88af4dbfa7365262320d533c41f398ec",
+      "src": "https://github.com/BourgeoisBear/clrzr"
+    },
     "mason.nvim": {
       "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
       "src": "https://github.com/mason-org/mason.nvim"
@@ -12,17 +16,9 @@
       "rev": "fe1c25e",
       "src": "https://github.com/echasnovski/mini.pick"
     },
-    "nvim-lspconfig": {
-      "rev": "b34fbdf",
-      "src": "https://github.com/neovim/nvim-lspconfig"
-    },
     "oil.nvim": {
       "rev": "7e1cd77",
       "src": "https://github.com/stevearc/oil.nvim"
-    },
-    "plenary.nvim": {
-      "rev": "b9fd522",
-      "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "typst-preview.nvim": {
       "rev": "64469f8",

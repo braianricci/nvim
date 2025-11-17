@@ -20,11 +20,12 @@ vim.g.mapleader = " "
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- write, save, write and save, source
+-- write, save, write and save, source, clean search
 map("n", "<leader>w", ":write<CR>", opts)
 map("n", "<leader>q", ":quit<CR>", opts)
 map("n", "<leader>x", ":wq<CR>", opts)
 map("n", "<leader>o", ":update<CR> :source<CR>", opts)
+map("n", "<Esc>", ":<cmd>nohlsearch<CR>", opts)
 
 -- copy, cut and paste to/from system clipboard
 map({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
@@ -72,6 +73,11 @@ end, opts)
 map("n", "<Tab>", "gt", opts)
 map("n", "<S-Tab>", "gT", opts)
 
+-- harpoon-like
+map("n", "<leader>a", function ()
+	vim.cmd("argadd %")
+	vim.cmd("argdedup")
+end)
 
 ----------------oO0 plugins 0Oo----------------
 
@@ -82,6 +88,7 @@ vim.pack.add({
 	{ src = "https://github.com/echasnovski/mini.pairs" },
 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/BourgeoisBear/clrzr" }, --not working?
 })
 
 require "mini.pick".setup()
@@ -95,7 +102,7 @@ vim.lsp.enable({ "lua_ls" })
 ----------------oO0 style 0Oo----------------
 
 vim.cmd("colorscheme vague")
---vim.cmd(":highlight StatusLine guibg=#a36f51 ctermbg=none")
+vim.cmd(":highlight StatusLine guibg=#a36f51 ctermbg=none")
 vim.cmd(":highlight StatusLine guibg=none ctermbg=none")
 vim.cmd(":highlight Normal guibg=none ctermbg=none")
 vim.cmd(":highlight NormalNC guibg=none ctermbg=none")
@@ -108,4 +115,4 @@ vim.cmd(":highlight NormalFloat guibg=none ctermbg=none")
 vim.cmd(":highlight FloatBorder guibg=none ctermbg=none")
 
 vim.o.fillchars = "stl:─"
-vim.o.statusline = "%=    %m[%f] %l/%L"
+vim.o.statusline = "%= %m[%f] :: %l/%L"
