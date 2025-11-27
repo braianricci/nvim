@@ -14,6 +14,7 @@ vim.o.sidescrolloff = 5
 vim.o.signcolumn = "yes"
 vim.o.winborder = "rounded"
 vim.o.laststatus = 3
+vim.o.tabline = "%!v:lua.require'tabline'.TabLine()" --custom plugin call
 
 
 ----------------oO0 keymaps 0Oo----------------
@@ -27,13 +28,13 @@ end
 
 --save and restore session
 vim.keymap.set("n", "<leader>ss", function()
-    vim.cmd("mksession! " .. vim.fn.stdpath("config") .. "/sessions/session.vim")
-    print("Session saved")
+	vim.cmd("mksession! " .. vim.fn.stdpath("config") .. "/sessions/session.vim")
+	print("Session saved")
 end)
 
 vim.keymap.set("n", "<leader>sl", function()
-    vim.cmd("source " .. vim.fn.stdpath("config") .. "/sessions/session.vim")
-    print("Session restored")
+	vim.cmd("source " .. vim.fn.stdpath("config") .. "/sessions/session.vim")
+	print("Session restored")
 end)
 
 -- write, save, write and save, source, clean search
@@ -64,7 +65,7 @@ remap("n", "<C-u>", "<C-u>zz")         --scroll up and center
 remap("n", "<C-d>", "<C-d>zz")         --scroll down and center
 
 -- copilot chat
-remap("n", "<leader>c", ":CopilotChat<CR>")
+remap("n", "<leader>c", ":CopilotChatToggle<CR>")
 
 -- insert esc, pairs
 remap("i", "kj", "<Esc>")
@@ -133,8 +134,8 @@ vim.pack.add({
 	"https://github.com/chomosuke/typst-preview.nvim",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/nvim-lua/plenary.nvim",
-	"https://github.com/CopilotC-Nvim/CopilotChat.nvim",
 	"https://github.com/github/copilot.vim",
+	"https://github.com/CopilotC-Nvim/CopilotChat.nvim",
 	"https://github.com/BourgeoisBear/clrzr" --not working?
 })
 
@@ -147,11 +148,16 @@ require "oil".setup()
 require "mason".setup()
 require "plenary"
 require "fterminal" --mine
+-- require "tabline" --mine
 require "copilotchat".setup({
 	model = "gpt-4.1",
+	auto_insert_mode = true,
+	window = {
+		width = 0.5,
+	}
 })
 
-vim.lsp.enable({ "lua_ls" })
+vim.lsp.enable({ "lua_ls", "ts_ls" })
 
 
 ----------------oO0 style 0Oo----------------
@@ -169,8 +175,8 @@ vim.cmd(":highlight SignColumn guibg=none ctermbg=none")
 vim.cmd(":highlight winborder guibg=none ctermbg=none")
 vim.cmd(":highlight NormalFloat guibg=none ctermbg=none")
 vim.cmd(":highlight FloatBorder guibg=none ctermbg=none")
-vim.cmd(":highlight TabLineSel gui=underline ctermbg=none")
-vim.cmd(":highlight TabLine guibg=none ctermbg=none")
+--vim.cmd(":highlight TabLineSel gui=underline ctermbg=none")
+--vim.cmd(":highlight TabLine guibg=none ctermbg=none")
 vim.cmd(":highlight TabLineFill guibg=none ctermbg=none")
 
 vim.o.fillchars = "stl:─"
